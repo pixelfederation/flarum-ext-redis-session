@@ -1,0 +1,30 @@
+{
+    "name": "pixelfederation/flarum-ext-redis-session",
+    "description": "Redis session storage",
+    "type": "flarum-extension",
+    "keywords": ["flarum", "redis", "session"],
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "PixelFederation\\RedisSession\\": "src/"
+        }
+    },
+    "require": {
+        "flarum/core": "^0.1.0-beta.3",
+        "predis/predis": "^1.1"
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "RedisSession",
+            "icon": {
+                "name": "database",
+                "backgroundColor": "#3b5998",
+                "color": "#fff"
+            }
+        },
+        "flarum-locale": {
+            "code": "en",
+            "title": "English"
+        }
+    }
+}
