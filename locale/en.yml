@@ -1,0 +1,9 @@
+pixelfederation-redis-session:
+    admin:
+        redis_session_settings:
+            title: Redis Session settings
+            host_label: Host
+            db_label: DB
+            port_label: Port
+            password_label: Password
+            ttl_label: TTL
