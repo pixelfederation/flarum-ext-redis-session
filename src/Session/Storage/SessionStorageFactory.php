@@ -13,6 +13,7 @@ use Flarum\Settings\SettingsRepositoryInterface;
 use PixelFederation\RedisSession\Session\Storage\Handler\SessionHandlerFactoryInterface;
 use PixelFederation\RedisSession\Settings\Settings;
 use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
+use Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface;
 
 /**
  *
@@ -42,11 +43,10 @@ final class SessionStorageFactory implements SessionStorageFactoryInterface
     /**
      * @inheritdoc
      */
-    public function create()
+    public function create(): SessionStorageInterface
     {
         $handler = $this->handlerFactory->create();
         $storageOptions = $this->getStorageOptions();
-
 
         return new NativeSessionStorage($storageOptions, $handler);
     }
@@ -54,7 +54,7 @@ final class SessionStorageFactory implements SessionStorageFactoryInterface
     /**
      * @return array
      */
-    private function getStorageOptions()
+    private function getStorageOptions(): array
     {
         $storageOptions = $this->settings->get(Settings::STORAGE_OPTIONS);
         if ($storageOptions !== null && $storageOptions !== '') {

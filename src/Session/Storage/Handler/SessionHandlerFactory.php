@@ -14,6 +14,7 @@ use PixelFederation\RedisSession\Redis\Client\ClientFactoryInterface;
 use PixelFederation\RedisSession\Settings\Settings;
 use Predis\Client;
 use RuntimeException;
+use SessionHandlerInterface;
 
 /**
  *
@@ -44,7 +45,7 @@ final class SessionHandlerFactory implements SessionHandlerFactoryInterface
      * @inheritdoc
      * @throws \RuntimeException
      */
-    public function create()
+    public function create(): SessionHandlerInterface
     {
         $client = $this->createClient();
         $handlerOptions = $this->getHandlerOptions();
@@ -59,7 +60,7 @@ final class SessionHandlerFactory implements SessionHandlerFactoryInterface
      * @return Client
      * @throws \RuntimeException
      */
-    private function createClient()
+    private function createClient(): Client
     {
         $client = $this->clientFactory->create();
         if (!$client instanceof Client) {
@@ -72,7 +73,7 @@ final class SessionHandlerFactory implements SessionHandlerFactoryInterface
     /**
      * @return array
      */
-    private function getHandlerOptions()
+    private function getHandlerOptions(): array
     {
         $handlerOptions = $this->settings->get(Settings::HANDLER_OPTIONS);
         if ($handlerOptions !== null && $handlerOptions !== '') {

@@ -32,7 +32,7 @@ final class SessionProvider extends AbstractServiceProvider
     /**
      * {@inheritdoc}
      */
-    public function register()
+    public function register(): void
     {
         $this->app->singleton(FactoryInterface::class, function () {
             return new Factory();

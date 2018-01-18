@@ -1,6 +1,11 @@
 # flarum-ext-redis-session
 Redis session handler for Flarum
 
+## Installation
+```
+composer require pixelfederation/flarum-ext-redis-session
+```
+
 ## Settings
 - host
 - port

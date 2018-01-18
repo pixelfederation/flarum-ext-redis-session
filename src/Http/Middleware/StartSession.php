@@ -15,7 +15,6 @@ use Illuminate\Support\Str;
 use PixelFederation\RedisSession\Session\SessionFactoryInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Zend\Stratigility\MiddlewareInterface;
 
@@ -66,7 +65,7 @@ final class StartSession implements MiddlewareInterface
      * @return SessionInterface
      * @throws \RuntimeException
      */
-    private function startSession()
+    private function startSession(): SessionInterface
     {
         $session = $this->sessionFactory->create();
 
@@ -87,7 +86,7 @@ final class StartSession implements MiddlewareInterface
      * @return Response
      * @throws \InvalidArgumentException
      */
-    private function withCsrfTokenHeader(Response $response, SessionInterface $session)
+    private function withCsrfTokenHeader(Response $response, SessionInterface $session): Response
     {
         if ($session->has('csrf_token')) {
             $response = $response->withHeader('X-CSRF-Token', $session->get('csrf_token'));
@@ -102,7 +101,7 @@ final class StartSession implements MiddlewareInterface
      *
      * @return Response
      */
-    private function withSessionCookie(Response $response, SessionInterface $session)
+    private function withSessionCookie(Response $response, SessionInterface $session): Response
     {
         return FigResponseCookies::set(
             $response,

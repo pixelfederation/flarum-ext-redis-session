@@ -19,5 +19,5 @@ interface SessionHandlerFactoryInterface
     /**
      * @return SessionHandlerInterface
      */
-    public function create();
+    public function create(): SessionHandlerInterface;
 }

@@ -11,6 +11,7 @@ namespace PixelFederation\RedisSession\Session;
 
 use PixelFederation\RedisSession\Session\Storage\SessionStorageFactoryInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  *
@@ -33,7 +34,7 @@ final class SessionFactory implements SessionFactoryInterface
     /**
      * @inheritdoc
      */
-    public function create()
+    public function create(): SessionInterface
     {
         $storage = $this->storageFactory->create();
 

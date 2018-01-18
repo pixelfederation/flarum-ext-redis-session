@@ -19,5 +19,5 @@ interface SessionStorageFactoryInterface
     /**
      * @return SessionStorageInterface
      */
-    public function create();
+    public function create(): SessionStorageInterface;
 }

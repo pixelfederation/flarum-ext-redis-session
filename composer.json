@@ -1,8 +1,19 @@
 {
     "name": "pixelfederation/flarum-ext-redis-session",
-    "description": "Redis session storage",
+    "description": "Redis session storage for Flarum",
     "type": "flarum-extension",
-    "keywords": ["flarum", "redis", "session"],
+    "keywords": [
+        "extension",
+        "flarum",
+        "redis",
+        "session"
+    ],
+    "authors": [
+        {
+            "name": "Martin Škorupa",
+            "email": "mskorupa@pixelfederation.com"
+        }
+    ],
     "license": "proprietary",
     "autoload": {
         "psr-4": {
@@ -10,6 +21,7 @@
         }
     },
     "require": {
+        "php": ">=7.1",
         "flarum/core": "^0.1.0-beta.3",
         "predis/predis": "^1.1"
     },

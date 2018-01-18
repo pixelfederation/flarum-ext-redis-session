@@ -12,6 +12,7 @@ namespace PixelFederation\RedisSession\Redis\Client;
 use Flarum\Settings\SettingsRepositoryInterface;
 use PixelFederation\RedisSession\Settings\Settings;
 use Predis\Client;
+use Predis\ClientInterface;
 use Predis\Connection\FactoryInterface;
 
 /**
@@ -42,7 +43,7 @@ final class ClientFactory implements ClientFactoryInterface
     /**
      * @inheritdoc
      */
-    public function create()
+    public function create(): ClientInterface
     {
         $connectionParameters = $this->getConnectionParameters();
         $clientParameters = $this->parametersFactory->create($connectionParameters);
@@ -54,7 +55,7 @@ final class ClientFactory implements ClientFactoryInterface
     /**
      * @return array
      */
-    private function getClientOptions()
+    private function getClientOptions(): array
     {
         $clientOptions = $this->settings->get(Settings::CLIENT_OPTIONS);
         if ($clientOptions !== null && $clientOptions !== '') {
@@ -67,7 +68,7 @@ final class ClientFactory implements ClientFactoryInterface
     /**
      * @return array
      */
-    private function getConnectionParameters()
+    private function getConnectionParameters(): array
     {
         $connectionParameters = $this->settings->get(Settings::CONNECTION_PARAMETERS);
         if ($connectionParameters !== null && $connectionParameters !== '') {
