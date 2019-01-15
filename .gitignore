@@ -1,4 +1,4 @@
 .idea
 vendor/
 composer.lock
-js/admin/node_modules/
+js/node_modules/
