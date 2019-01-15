@@ -30,4 +30,4 @@ composer require pixelfederation/flarum-ext-redis-session
 
 ## Warning
 After enable this extension at admin, you will get error because of wrong configured redis connection.
-**You must set it directly at database.**
+**You must set it directly at database.** (in prefix_settings table after migrations)
