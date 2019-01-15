@@ -12,14 +12,13 @@ use Flarum\Foundation\Application;
 use Illuminate\Contracts\Events\Dispatcher;
 use PixelFederation\RedisSession\Provider;
 use Flarum\Extend\Frontend;
+use Flarum\Extend\Locales;
 
 return [
     (new Frontend('admin'))
         ->js(__DIR__.'/js/dist/admin.js'),
+    (new Locales(__DIR__.'/locale')),
     function (Dispatcher $events, Application $app) {
-        $events->listen(ConfigureLocales::class, function (ConfigureLocales $event) {
-            $event->loadLanguagePackFrom(__DIR__);
-        });
         $app->register(Provider\SessionProvider::class);
     }
 ];
