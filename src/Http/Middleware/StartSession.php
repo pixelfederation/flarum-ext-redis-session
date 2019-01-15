@@ -15,8 +15,10 @@ use Illuminate\Support\Str;
 use PixelFederation\RedisSession\Session\SessionFactoryInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Server\RequestHandlerInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use Zend\Stratigility\MiddlewareInterface;
+//use Zend\Stratigility\MiddlewareInterface;
+use Psr\Http\Server\MiddlewareInterface;
 
 /**
  *
@@ -60,6 +62,25 @@ final class StartSession implements MiddlewareInterface
 
         return $this->withSessionCookie($response, $session);
     }
+
+    /**
+     * @param Request $request
+     * @param RequestHandlerInterface $handler
+     * @return Response
+     */
+    public function process(Request $request, RequestHandlerInterface $handler): Response
+    {
+        $session = $this->startSession();
+
+        $request = $request->withAttribute('session', $session);
+
+        $response = $handler->handle($request);
+
+        $response = $this->withCsrfTokenHeader($response, $session);
+
+        return $this->withSessionCookie($response, $session);
+    }
+
 
     /**
      * @return SessionInterface
