@@ -11,9 +11,6 @@ namespace PixelFederation\RedisSession\Redis\Client;
 
 use Predis\ClientInterface;
 
-/**
- *
- */
 interface ClientFactoryInterface
 {
     /**

@@ -15,9 +15,6 @@ use Predis\Client;
 use Predis\ClientInterface;
 use Predis\Connection\FactoryInterface;
 
-/**
- *
- */
 final class ClientFactory implements ClientFactoryInterface
 {
     /**

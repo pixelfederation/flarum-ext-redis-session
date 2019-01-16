@@ -11,9 +11,6 @@ namespace PixelFederation\RedisSession\Session\Storage\Handler;
 
 use SessionHandlerInterface;
 
-/**
- *
- */
 interface SessionHandlerFactoryInterface
 {
     /**

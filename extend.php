@@ -7,17 +7,15 @@ declare(strict_types=1);
  * @license:  Internal use only
  */
 
-use Flarum\Event\ConfigureLocales;
 use Flarum\Foundation\Application;
 use Illuminate\Contracts\Events\Dispatcher;
 use PixelFederation\RedisSession\Provider;
-use Flarum\Extend\Frontend;
-use Flarum\Extend\Locales;
+use Flarum\Extend;
 
 return [
-    (new Frontend('admin'))
+    (new Extend\Frontend('admin'))
         ->js(__DIR__.'/js/dist/admin.js'),
-    (new Locales(__DIR__.'/locale')),
+    (new Extend\Locales(__DIR__.'/locale')),
     function (Dispatcher $events, Application $app) {
         $app->register(Provider\SessionProvider::class);
     }

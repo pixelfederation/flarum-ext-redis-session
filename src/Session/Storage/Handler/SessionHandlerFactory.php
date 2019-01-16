@@ -16,9 +16,6 @@ use Predis\Client;
 use RuntimeException;
 use SessionHandlerInterface;
 
-/**
- *
- */
 final class SessionHandlerFactory implements SessionHandlerFactoryInterface
 {
     /**

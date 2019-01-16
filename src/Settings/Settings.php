@@ -9,9 +9,6 @@ declare(strict_types=1);
 
 namespace PixelFederation\RedisSession\Settings;
 
-/**
- *
- */
 final class Settings
 {
     public const HOST = 'pixelfederation-redis-session.host';
