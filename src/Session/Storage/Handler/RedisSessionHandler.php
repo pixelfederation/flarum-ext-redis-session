@@ -201,7 +201,15 @@ LUA;
             }
         }
 
-        return $this->redis->get($this->getRedisKey($sessionId)) ?: '';
+        $key = $this->getRedisKey($sessionId);
+        $value = $this->redis->get($key);
+        if ($value) {
+            $this->redis->expire($key, $this->ttl);
+
+            return $value;
+        }
+
+        return '';
     }
 
     /**
